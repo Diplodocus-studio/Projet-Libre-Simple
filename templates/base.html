@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body class="">
+    <header class="">
+        <a href="/" class="">Projet libre</a>
+
+        <!--Barre de recherche-->
+        <form action="/search" method="get" class="">
+            <input type="text" name="q" placeholder="Recherche" class="">
+            <button type="submit" class="">🔎</button>
+        </form>
+
+        <!--Menu navigation-->
+        <nav>
+            <ul>
+                {% if session['user'] %}
+                    <li> <a href="/publish">Publier</a></li>
+                    <li><a href="/logout">Se deconecter</a></li>
+                {% else %}
+                    <li> <a href="/login">Se connecter</a></li>
+                    <li><a href="/singin">S'enregistrer</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="">
+    {% block content %}
+    <!-- Contenu contextuel-->
+    {% endblock %}
+    </main>
+
+    <footer class="gray-950 text-center p-10">
+        <p>Mateo DP Sutdio 2025</p>
+    </footer>
+</body>
+</html>

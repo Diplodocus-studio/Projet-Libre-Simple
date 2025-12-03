@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if session['user'] %}
+
+        <!--Section de la grille d'anonce-->
+        <section class="">
+            <h2>Your posts</h2>*
+            <hr width="80%" />
+            <!--structure bloc d'annonce-->
+            {% for user_post in user_post %}
+            <article class="">
+                <h2 class="">{{user_post['title']}}</h2>
+                <hr>
+                <p class="">{{user_post['content']}}</p>
+                <p class="">{{user_post['author']}}</p>
+            </article>
+            {% endfor %}
+        </section>
+
+        <!--Section de la grille d'anonce-->
+        <section class="">
+            <h2>Popular posts</h2>
+            <hr width="80%" />
+            <!--structure bloc d'annonce-->
+            {% for popular_post in popular_post %}
+            <article class="">
+                <h2 class="">{{popular_post['title']}}</h2>
+                <hr>
+                <p class="">{{popular_post['content']}}</p>
+                <p class="">{{popular_post['author']}}</p>
+            </article>
+            {% endfor %}
+        </section>
+
+    {% else %}
+
+        <!--Section de la grille d'anonce-->
+        <section class="">
+            <!--structure bloc d'annonce-->
+            {% for popular_post in popular_post %}
+            <article class="">
+                <h2 class="">{{popular_post['title']}}</h2>
+                <hr>
+                <p class="">{{popular_post['content']}}</p>
+                <p class="">{{popular_post['author']}}</p>
+            </article>
+            {% endfor %}
+        </section>
+
+    {% endif %}
+
+{% endblock %}
