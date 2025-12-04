@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+import pymongo
 app = Flask(__name__)
+
+mongo = pymongo.MongoClient("mongodb+srv://mateohiolle_db_user:<db_password>@post.qt7jab2.mongodb.net/?appName=Post")
 
 @app.route('/')
 def index():
