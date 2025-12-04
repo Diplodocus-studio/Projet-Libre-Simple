@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 
-<body class="bg-white">
-    <header class="bg-slate-300/50 border flex justify-around p-10">
+<body class="bg-platinum">
+    <header class="bg-jet-black border flex justify-around p-10">
         <a href="/" class="text-2xl">Projet libre</a>
 
         <!--Barre de recherche-->
@@ -21,11 +21,11 @@
         <nav>
             <ul class="flex flex-row-reverse gap-3">
                 {% if session['user'] %}
-                    <li> <a href="/publish" class="bg-fuchsia-600 rounded p-2">Publish</a></li>
-                    <li><a href="/Signout" class="bg-gray-600 rounded p-2">Signout</a></li>
+                    <li> <a href="/publish" class=" p-2">Publish</a></li>
+                    <li><a href="/Signout" class=" p-2">Signout</a></li>
                 {% else %}
-                    <li> <a href="/signin" class="bg-fuchsia-600 rounded p-2">Signin</a></li>
-                    <li><a href="/signup" class="bg-gray-600 rounded p-2">Signup</a></li>
+                    <li> <a href="/signin" class=" p-2">Signin</a></li>
+                    <li><a href="/signup" class=" p-2">Signup</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -37,7 +37,7 @@
     {% endblock %}
     </main>
 
-    <footer class="bg-slate-300/50 text-center p-10">
+    <footer class="bg-jet-black text-center p-10">
         <p>Mateo DP Sutdio 2025</p>
     </footer>
 </body>
