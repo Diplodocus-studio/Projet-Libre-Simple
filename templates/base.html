@@ -21,10 +21,10 @@
         <nav>
             <ul class="flex flex-row-reverse gap-3">
                 {% if session['user'] %}
-                    <li> <a href="/publish" class="bg-fuchsia-600 rounded p-2">Publsh</a></li>
-                    <li><a href="/logout" class="bg-gray-600 rounded p-2">Logout</a></li>
+                    <li> <a href="/publish" class="bg-fuchsia-600 rounded p-2">Publish</a></li>
+                    <li><a href="/Signout" class="bg-gray-600 rounded p-2">Signout</a></li>
                 {% else %}
-                    <li> <a href="/login" class="bg-fuchsia-600 rounded p-2">Login</a></li>
+                    <li> <a href="/signin" class="bg-fuchsia-600 rounded p-2">Signin</a></li>
                     <li><a href="/signup" class="bg-gray-600 rounded p-2">Signup</a></li>
                 {% endif %}
             </ul>

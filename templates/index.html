@@ -3,53 +3,46 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    {% if session['user'] %}
+    {% if session['user'] and user_post is not none %}
 
-        <!--Section de la grille d'anonce-->
-        <section class="">
-            <h2>Your posts</h2>*
-            <hr width="80%" />
-            <!--structure bloc d'annonce-->
-            {% for user_post in user_post %}
-            <article class="">
-                <h2 class="">{{user_post['title']}}</h2>
-                <hr>
-                <p class="">{{user_post['content']}}</p>
-                <p class="">{{user_post['author']}}</p>
-            </article>
-            {% endfor %}
-        </section>
+        <section>
+            <h2>Your posts</h2>
+            <hr>
 
-        <!--Section de la grille d'anonce-->
-        <section class="">
-            <h2>Popular posts</h2>
-            <hr width="80%" />
-            <!--structure bloc d'annonce-->
-            {% for popular_post in popular_post %}
-            <article class="">
-                <h2 class="">{{popular_post['title']}}</h2>
-                <hr>
-                <p class="">{{popular_post['content']}}</p>
-                <p class="">{{popular_post['author']}}</p>
-            </article>
-            {% endfor %}
-        </section>
+            <!--Section de la grille d'anonce-->
+            <section class="grid grid-rows-2 grid-cols-4 gap-5 p-5">
 
-    {% else %}
-
-        <!--Section de la grille d'anonce-->
-        <section class="">
-            <!--structure bloc d'annonce-->
-            {% for popular_post in popular_post %}
-            <article class="">
-                <h2 class="">{{popular_post['title']}}</h2>
-                <hr>
-                <p class="">{{popular_post['content']}}</p>
-                <p class="">{{popular_post['author']}}</p>
-            </article>
-            {% endfor %}
+                <!--structure bloc d'annonce-->
+                {% for user_post in user_post %}
+                <article class="">
+                    <h3 class="">{{user_post['title']}}</h3>
+                    <hr>
+                    <p class="">{{user_post['content']}}</p>
+                    <p class="">{{user_post['author']}}</p>
+                </article>
+                {% endfor %}
+            </section>
         </section>
 
     {% endif %}
+
+    <section>
+        <h2>Popular posts</h2>
+        <hr>
+        
+        <!--Section de la grille d'anonce-->
+        <section class="grid grid-flow-row grid-cols-4 gap-5 p-5">
+
+            <!--structure bloc d'annonce-->
+            {% for popular_post in popular_post %}
+            <article class="">
+                <h3 class="">{{popular_post['title']}}</h3>
+                <hr>
+                <p class="">{{popular_post['content']}}</p>
+                <p class="">{{popular_post['author']}}</p>
+            </article>
+            {% endfor %}
+        </section>
+    </section>
 
 {% endblock %}
