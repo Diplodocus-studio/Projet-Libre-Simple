@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                    'platinum': '#efefef',
+                    'jet-black': '#2b303a',
+                    'frosted-blue': '#92dce5',
+                    'lavender-blush': '#eee5e9',
+                    'custom-grey': '#7c7c7c',
+                    'burnt-tangerine': '#d64933'
+                }
+            }
+        }
+    </script>
     <title>Document</title>
 </head>
 
@@ -22,7 +36,7 @@
             <ul class="flex flex-row-reverse gap-3">
                 {% if session['user'] %}
                     <li> <a href="/publish" class=" p-2">Publish</a></li>
-                    <li><a href="/Signout" class=" p-2">Signout</a></li>
+                    <li><a href="/signout" class=" p-2">Signout</a></li>
                 {% else %}
                     <li> <a href="/signin" class=" p-2">Signin</a></li>
                     <li><a href="/signup" class=" p-2">Signup</a></li>

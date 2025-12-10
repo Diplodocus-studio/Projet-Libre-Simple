@@ -1,17 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ['./templates/*.html'],
   theme: {
-    extend: {
-       colors: {
-        'platinum': '#EFEFEF',
-        'jet-black': '#2B303A',
-        'frosted-blue': '#92DCE5',
-        'lavender-blush': '#EEE5E9',
-        'custom-grey': '#7C7C7C',
-        'burnt-tangerine': '#D64933',
+    colors: {
+        'platinum': '#efefef',
+        'jet-black': '#2b303a',
+        'frosted-blue': '#92dce5',
+        'lavender-blush': '#eee5e9',
+        'custom-grey': '#7c7c7c',
+        'burnt-tangerine': '#d64933'
       },
-    },
   },
   plugins: [],
   "editor.quickSuggestions": {
