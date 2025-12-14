@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block content %}
+{% if error %}
+    <p>Error: {{error}}</p>
+{% endif %}
+<div>
+    <form method="POST" action="{{url_for('publish')}}">
+        <div>
+            <label>Title</label>
+            <input name="title" type="text" placeholder="title">
+        </div>
+        <div>
+            <label>Media</label>
+            <input name="media" type="text" placeholder="eg. https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        </div>
+        <div>
+            <label>Content</label>
+            <input name="content" type="text" placeholder="content">
+        </div>
+        <div>
+            <button type="submit">Publish</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

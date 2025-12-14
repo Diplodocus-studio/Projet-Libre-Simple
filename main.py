@@ -12,8 +12,8 @@ def index():
 
     user_post = list(db["posts"].find({"author": session['user']})) if 'user' in session else None
 
-    popular_post = list(db["posts"].find({}))
-    return render_template('index.html', user_post=user_post, popular_post=popular_post)
+    trending_post = list(db["posts"].find({}))
+    return render_template('index.html', user_post=user_post, trending_post=trending_post)
 
 
 @app.route("/signin", methods=['POST', 'GET'])
@@ -63,10 +63,52 @@ def signout():
     session.clear()
     return redirect(url_for("index"))
 
+@app.route('/search', methods=['GET'])
+def search():
+    query = request.args.get('q', '').strip()
+
+    if query == '':
+        results = list(db['posts'].find({}))
+    else:
+        results = list(db['posts'].find({
+            "$or" : [
+                {"title" : {"$regex" : query, "$options" : "i"}},
+                {"content" : {"$regex" : query, "$options" : "i"}},
+                {"author" : {"$regex" : query, "$options" : "i"}}
+            ]
+        }))
+
+    return render_template("search_results.html", posts = results, query = query)
+
 @app.route('/post')
 def post():
     #media =
     return redirect(url_for("post.html"))
+
+@app.route("/publish", methods=['POST', 'GET'])
+def publish():
+    if 'user' not in session:
+        return render_template('login.html')
+    
+    if request.method == 'POST':
+        db_posts = db['posts']
+        title = request.form['title']
+        media = request.form['media']
+        content = request.form['content']
+        author = session['user']
+
+        if title and content and media:
+            db_posts.insert_one({
+                'title' : title,
+                'media' : media,
+                'content' : content,
+                'author' : author
+            })
+            return redirect(url_for('index'))
+        else:
+            return render_template('publish.html', erreur="Please Fill All Fields")
+    else:
+        return render_template('publish.html')
 
 
 if __name__ == "__main__":

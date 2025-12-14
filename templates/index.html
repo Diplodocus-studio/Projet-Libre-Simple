@@ -27,19 +27,19 @@
     {% endif %}
 
     <section>
-        <h2>Popular posts</h2>
+        <h2>Trending posts</h2>
         <hr>
         
         <!--Section de la grille d'anonce-->
         <section class="grid grid-flow-row grid-cols-4 gap-5 p-5">
 
             <!--structure bloc d'annonce-->
-            {% for popular_post in popular_post %}
+            {% for trending_post in trending_post %}
             <article class="">
-                <h3 class="">{{popular_post['title']}}</h3>
+                <h3 class="">{{trending_post['title']}}</h3>
                 <hr>
-                <p class="">{{popular_post['content']}}</p>
-                <p class="">{{popular_post['author']}}</p>
+                <p class="">{{trending_post['content']}}</p>
+                <p class="">{{trending_post['author']}}</p>
             </article>
             {% endfor %}
         </section>

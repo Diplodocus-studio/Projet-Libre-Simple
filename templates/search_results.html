@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="">
+        <h2 class="">Search results for '{{query}}'</h2>
+
+    </div>
+
+    <!--Section de la grille d'anonce-->
+    <section class="grid grid-flow-row grid-cols-4 gap-5 p-5">
+        <!--structure bloc d'annonce-->
+        {% for posts in posts %}
+        <article class="">
+                <h3 class="">{{posts['title']}}</h3>
+                <hr>
+                <p class="">{{posts['content']}}</p>
+                <p class="">{{posts['author']}}</p>
+            </article>
+        {% endfor %}
+
+        {% if annonce|length == 0 %}
+            <p>No results found</p>
+        {% endif %}
+    </section>
+{% endblock %}
