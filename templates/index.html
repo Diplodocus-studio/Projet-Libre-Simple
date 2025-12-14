@@ -35,11 +35,17 @@
 
             <!--structure bloc d'annonce-->
             {% for trending_post in trending_post %}
-            <article class="">
-                <h3 class="">{{trending_post['title']}}</h3>
-                <hr>
-                <p class="">{{trending_post['content']}}</p>
-                <p class="">{{trending_post['author']}}</p>
+            <article class="group relative grow">
+                <div>
+                    <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            {{trending_post['title']}}
+                        </a>
+                    </h3>
+                    <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">{{trending_post['content']}}</p>
+                    <p class="font-semibold text-gray-900">{{trending_post['author']}}</p>
+                </div>
             </article>
             {% endfor %}
         </section>
