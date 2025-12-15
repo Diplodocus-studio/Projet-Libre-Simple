@@ -80,10 +80,10 @@ def search():
 
     return render_template("search_results.html", posts = results, query = query)
 
-@app.route('/post')
-def post():
-    #media =
-    return redirect(url_for("post.html"))
+# @app.route('/post')
+# def post():
+#     #media =
+#     return redirect(url_for("post.html"))
 
 @app.route("/publish", methods=['POST', 'GET'])
 def publish():
@@ -109,6 +109,14 @@ def publish():
             return render_template('publish.html', erreur="Please Fill All Fields")
     else:
         return render_template('publish.html')
+
+
+@app.route('/<id>')
+def open_post(id):
+    db_posts = db['posts']
+    post = db_posts.find_one({'_id' : "id"})
+    print("sucsess")
+    return render_template('post.html', post=post)
 
 
 if __name__ == "__main__":
