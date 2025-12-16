@@ -2,12 +2,29 @@
 
 {% extends 'base.html' %}
 {% block content %}
+{% if error %}
+    <p>Error: {{error}}</p>
+{% endif %}
 
     <h1 class="">{{post['title']}}</h1>
     <hr>
     <p class="">By:{{post['author']}}</p>
-    
-    
+
+    {% if post['media_type'] == "yt" %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{post['media']}}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    {% elif post['media_type'] == "itch" %}
+        <iframe frameborder="0" src="https://itch.io/embed-upload/{{post['media']}}" allowfullscreen="" width="1280" height="740"></iframe>
+
+    {% elif post['media_type'] == "scratch" %}
+        <iframe src="https://scratch.mit.edu/projects/{{post['media']}}/embed"
+        allowtransparency="true" width="485" height="402"
+        frameborder="0" scrolling="no" allowfullscreen></iframe>
+    {% elif post['media_type'] == "img" %}
+        <img src="{{post['media']}}">
+    {% endif %}
 
     <p class="">{{post['content']}}</p>
 
