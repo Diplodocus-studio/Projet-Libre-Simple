@@ -13,9 +13,10 @@
     {% if post['media_type'] == "yt" %}
         <iframe id="ytplayer" type="text/html" width="720" height="405"
         src="https://www.youtube.com/embed/{{post['media']}}"
-        frameborder="0" allowfullscreen>
+        frameborder="0" allowfullscreen></iframe>
     {% elif post['media_type'] == "itch" %}
-        <iframe frameborder="0" src="https://itch.io/embed-upload/{{post['media']}}" allowfullscreen="" width="1280" height="740"></iframe>
+        <iframe frameborder="0" src="https://itch.io/embed-upload/{{post['media']}}"
+        allowfullscreen="" width="1280" height="740"></iframe>
 
     {% elif post['media_type'] == "scratch" %}
         <iframe src="https://scratch.mit.edu/projects/{{post['media']}}/embed"
@@ -26,5 +27,4 @@
     {% endif %}
 
     <p class="">{{post['content']}}</p>
-
 {% endblock %}
