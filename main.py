@@ -106,15 +106,16 @@ def publish():
 
         elif bool(re.match(r'^(https?:\/\/)?(www\.)?itch\.io\/embed-upload\/\d+(\?.*)?$', media, re.IGNORECASE)):
             media_type = "itch"
-            media = (m := re.search(r'itch\.io/(?:embed-upload|embed)/(\d+)', media) and m.group(1))
+            media = (m := re.search(r'itch\.io/(?:embed-upload|embed)/(\d+)', media)) and m.group(1)
 
         elif bool(re.match(r'^(https?:\/\/)?(www\.)?scratch\.mit\.edu\/projects\/\d+\/?(\?.*)?$', media, re.IGNORECASE)):
             media_type = "scratch"
-            media = ((m := re.search(r'scratch\.mit\.edu/projects/(\d+)', media)) and m.group(1))
+            media = (m := re.search(r'scratch\.mit\.edu/projects/(\d+)', media)) and m.group(1)
 
         elif bool(re.match(r'^(https?:\/\/)?[^\s"\']+\.(png|jpe?g|gif|webp|bmp|svg|ico|avif)(\?.*)?$', media, re.IGNORECASE)):
             media_type = "img"
         else:
+            print("eror")
             return render_template('publish.html', error="Please enter a supported media type")
         
 

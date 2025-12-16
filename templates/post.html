@@ -11,10 +11,9 @@
     <p class="">By:{{post['author']}}</p>
 
     {% if post['media_type'] == "yt" %}
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{post['media']}}"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id="ytplayer" type="text/html" width="720" height="405"
+        src="https://www.youtube.com/embed/{{post['media']}}"
+        frameborder="0" allowfullscreen>
     {% elif post['media_type'] == "itch" %}
         <iframe frameborder="0" src="https://itch.io/embed-upload/{{post['media']}}" allowfullscreen="" width="1280" height="740"></iframe>
 
