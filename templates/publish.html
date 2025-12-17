@@ -8,16 +8,16 @@
 <div>
     <form method="POST" action="{{url_for('publish')}}">
         <div>
-            <label>Title</label>
+            <label>Title :</label>
             <input name="title" type="text" placeholder="title">
         </div>
         <div>
-            <label>Media</label>
+            <label>Media :</label>
             <input name="media" type="text" placeholder="eg. https://www.youtube.com/watch?v=M7lc1UVf-VE">
         </div>
         <div>
-            <label>Content</label>
-            <input name="content" type="text" placeholder="content">
+            <label>Content :</label>
+            <textarea name="content" style="resize:none" rows="10" cols="50" placeholder="content"></textarea>
         </div>
         <div>
             <button type="submit">Publish</button>

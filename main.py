@@ -71,6 +71,13 @@ def search():
 
     if query == '':
         results = list(db['posts'].find({}))
+    elif bool(re.match(r"^user:", query, re.IGNORECASE)):
+        query = re.match(r"^user:\s*(.*)$", query, re.IGNORECASE).group(1)
+        results = list(db['posts'].find({
+            "$or" : [
+                {"author" : {"$regex" : query, "$options" : "i"}}
+            ]
+        }))
     else:
         results = list(db['posts'].find({
             "$or" : [
@@ -81,11 +88,6 @@ def search():
         }))
 
     return render_template("search_results.html", posts = results, query = query)
-
-# @app.route('/post')
-# def post():
-#     #media =
-#     return redirect(url_for("post.html"))
 
 @app.route("/publish", methods=['POST', 'GET'])
 def publish():
@@ -116,7 +118,12 @@ def publish():
             media_type = "img"
         else:
             print("eror")
-            return render_template('publish.html', error="Please enter a supported media type")
+            return render_template('publish.html', error="""Please enter a compatible media type.
+                                                                Compatible media:
+                                                                YouTube video,
+                                                                Itch.io game (please provide the embed URL),
+                                                                Scratch game,
+                                                                Image URL""")
         
 
         content = request.form['content']
