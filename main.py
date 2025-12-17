@@ -153,6 +153,6 @@ def open_post(id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=81)
+    app.run(host='0.0.0.0', port=81, ssl_context="adhoc")
 
 #utiliser imgur pour image
